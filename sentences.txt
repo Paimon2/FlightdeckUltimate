@@ -1,0 +1,830 @@
+zero
+one
+two
+three
+four
+five
+six
+seven
+eight
+nine
+niner
+ten
+eleven
+twelve
+thirteen
+fourteen
+fifteen
+sixteen
+seventeen
+eighteen
+nineteen
+twenty
+thirty
+forty
+fifty
+sixty
+seventy
+eighty
+ninety
+thousand
+a thousand
+a couple thousand
+a couple
+hundred
+feet
+knots
+nautical miles
+flaps down
+flaps up
+select flaps down
+closed and locked
+select flaps up
+flaps up the whole way
+flaps up all the way
+flaps up entirely
+flaps up the whole way
+flaps up all the way
+flaps up entirely
+all the flaps up
+all the flaps down
+flaps
+checklist
+all
+as required
+init ref
+verify
+psi
+gen
+ecam
+fms
+ta
+ta-ra
+oxygen
+apu bleed
+baro ref
+retracted
+disarmed
+extended
+confirm
+checked
+autobrake
+advised
+park
+ignite
+extinguished
+guard
+closed
+locked
+unlocked
+detent
+turnoff
+wing
+park
+hold
+hold to
+normal
+fault
+inoperative
+inop
+nav
+illuminated
+start
+continuous
+available
+checked and set
+stowed
+down and closed
+auxiliary
+power
+unit
+irs
+hydraulic
+evacuation
+evacuate
+both on
+both off
+all off
+all on
+arm
+selected
+free
+announced
+standard
+clear
+routes
+approach
+frequency
+cruise
+course
+all auto
+all automatic
+operation
+as needed
+apu generators
+glideslope
+capture
+standby power
+battery
+batteries
+rto
+quantity
+quantities
+pump
+ground
+complete
+red light
+green light
+released
+exterior
+interior
+external
+internal
+cross checked
+transition level
+transition
+circuit breakers
+bleeds
+bleed
+obtain
+adjusted
+rich
+idle
+check
+remove
+add
+test
+release
+then
+in
+audibly
+check quantity
+check condition
+check visually
+check
+tube
+within
+seconds
+secure
+cold
+charts
+rpm
+max
+idle
+pull
+out
+execute
+tuned
+localizer
+marker
+markers
+diff
+differential
+green
+mixture
+fastened
+record
+setup
+working
+as desired
+fuel
+bulb
+selector
+electrical
+flow
+rise
+lean
+gauges
+pedal
+reviewed
+calculated
+alternate
+fire
+non normal
+emergency
+belly landing
+cutoff
+logo
+cdu
+in
+recall
+review
+landing alt
+landing altitude
+verify
+check and set
+increasing
+decreasing
+dropping
+rising
+cutout
+barometer
+baro
+radial
+qnh
+crosscheck
+conduct
+fixed
+notify
+schedule
+let me know
+if required
+mcp
+adjust
+rejected takeoff
+go around
+cancel landing
+preflight checklist
+before start checklist
+start checklist
+start up checklist
+before taxi checklist
+taxi checklist
+minimums
+app
+aircraft
+before takeoff checklist
+takeoff checklist
+after takeoff checklist
+descent checklist
+approach checklist
+after landing checklist
+go around checklist
+go-around
+go around
+shut down checklist
+secure checklist
+degrees
+let's start again
+let's go over this again
+back to basics
+all the way back
+start over
+start again
+back to the start
+back to the beginning
+forget this
+please repeat that
+sorry?
+what?
+wut?
+wat?
+ham?
+hem?
+could you repeat that?
+repeat that
+say again
+say last
+say that again
+repeat last
+i couldn't hear you
+say that again
+hum?
+enable the transponder
+enable transponder
+disable the transponder
+disable transponder
+set the transponder
+set the transponder to
+set transponder mode C
+transponder mode C
+transponder mode charlie
+squawk emergency
+set squawk emergency
+set squawk VFR
+squawk VFR
+set squawk VFR in europe
+set squawk IDENT
+squawk IDENT
+squawk identify
+set squawk VFR european
+set squawk european VFR
+set squawk radio failure
+squawk radio failure
+set squawk military interceptor
+set squawk military intercept
+squawk military intercept
+set mode charlie
+set transponder mode charlie
+set transponder to
+transponder to
+the transponder
+transponder
+turn off the transponder
+turn on the transponder
+transponder off
+transponder on
+transponder standby
+standby
+engage reverse thrust
+maximum reverse thrust
+hold reverse thrust at max
+runway
+taxiway
+max reverse thrust
+disengage reverse thrust
+toggle reverse thrust
+reverse thrust off
+reverse thrust on
+thrust reversers off
+thrust reversers on
+thrust reversal on
+thrust reversal off
+start the APU
+start APU
+turn on the APU
+turn on APU
+turn off the APU
+turn off APU
+shut down the APU
+turn on the avionics
+turn on avionics
+turn off avionics
+toggle avionics
+toggle the avionics
+arm the speedbrakes
+arm speedbrakes
+disarm speedbrakes
+disarm the speedbrakes
+speedbrakes off
+speedbrakes on
+off speedbrakes
+on speedbrakes
+kill engine
+position lights
+flip COM1
+flip COM2
+mute COM1
+mute COM2
+flip NAV1
+flip NAV2
+ADF1
+ADF2
+mute ADF1
+mute ADF2
+arm the spoilers
+retract the spoilers
+retract spoilers
+raise spoilers
+raise the spoilers
+retract gear
+extend gear
+put the gear up
+put the gear down
+raise gear
+lower gear
+raise the gear
+lower the gear
+extend the gear
+retract the gear
+toggle the gear
+gear up
+gear down
+on
+off
+disabled
+enabled
+disable
+enable
+retract
+extend
+down
+up
+engage
+disengage
+autopilot off
+autopilot on
+disconnect the autopilot
+disconnect autopilot
+autopilot disconnect
+autopilot connect
+connect autopilot
+toggle autopilot
+turn on the autopilot
+turn off the autopilot
+speed intervention on
+turn off speed intervention
+turn on speed intervention
+select speed intervention
+deselect speed intervention
+speed intervention off
+toggle speed intervention
+heading select
+select heading select
+deselect heading select
+select heading hold
+deselect heading select
+heading select
+heading hold
+select vnav
+select hnav
+VOR hold
+alt hold
+altitude hold
+horizontal navigation
+lateral navigation
+vertical navigation
+turn on horizontal navigation
+turn on lateral navigation
+turn on vertical navigation
+turn off horizontal navigation
+turn off lateral navigation
+turn off vertical navigation
+start engine
+start engine number
+start engines
+set ADF1
+set ADF2
+change ADF1
+change ADF2
+hnav off
+hnav on
+vnav off
+vnav on
+select lnav
+turn on lnav
+turn off lnav
+deselect lnav
+deselect vnav
+
+lnav off
+lnav on
+lnav
+vnav
+nav lights off
+nav lights on
+nav light off
+nav light on
+navigation lights off
+navigation lights on
+turn off the nav lights
+turn on the nav lights
+flip on the nav lights
+flip off the nav lights
+turn off the nav light
+turn on the nav light
+flip on the nav light
+flip off the nav light
+flight directors off
+flight directors on
+flight director on
+flight director off
+flight director
+arm the autothrottle
+arm the autothrottles
+arm autothrottle
+disarm the autothrottle
+disarm the autothrottles
+disarm autothrottle
+autothrottle off
+autothrottle on
+arm localizer
+auto
+arm the localizer
+set altitude hold
+altitude hold off
+altitude hold on
+deselect vertical speed
+set speed bug
+set course
+set speed
+set heading
+set heading one
+set heading two
+set heading three
+set heading ninety degrees
+set heading ninety
+set heading nine zero
+set heading one eighty
+set heading one eight zero
+set heading two seventy
+set heading two seven zero
+set heading three sixty
+set heading three six zero
+set heading due south
+set heading due north
+set heading due east
+set heading due west
+set flight level
+set altitude
+set vertical speed
+set the speed to
+set the heading to
+set the flight level to
+set the altitude to
+set altitude bug to
+set the altitude bug to
+set the vertical speed to
+speed
+heading
+mach
+altitude
+flight level
+speed
+vertical speed
+decimal
+point
+set COM1
+set COM2
+change COM1
+change COM2
+select COM1
+select COM2
+set TOGA
+set takeoff thrust
+select takeoff thrust
+select climb thrust
+flaps up one
+flaps up a couple
+flaps up a notch
+flaps up by one
+flaps up by
+flaps up
+disable the seatbelt light
+disable the seatbelt sign
+turn off the seatbelt sign
+brighten the instruments
+brighten instruments
+instruments too dark
+turn on the landing lights
+switch on the landing lights
+flip on the landing lights
+toggle the landing lights
+turn on the landing light
+switch on the landing light
+flip on the landing light
+toggle the landing light
+position lights on
+position lights off
+position light on
+position light off
+tell the crew we're ready for takeoff
+we're ready for takeoff
+tell the flight attendant we're ready for cruise
+tell the flight attendant we're ready for boarding
+ready for boarding
+tell the flight attendant to serve meals
+meal time
+serve meals
+ready to serve meals
+turn off the landing light
+turn off the landing lights
+landing light off
+landing lights off
+landing light on
+landing lights on
+we're ready for pushback
+start pushback
+ready for pushback
+let's pushback
+request pushback
+disengage the brakes
+maximum braking
+turn the brakes on
+turn the brakes off
+parking brake on
+set course
+parking brake off
+parking brakes off
+parking brakes on
+brakes
+landing light
+strobe light
+strobe lights off
+strobe lights on
+strobe light on
+strobe light off
+turn off the strobe light
+turn off the strobe lights
+turn on the strobe light
+turn on the strobe lights
+beacon light
+beacon lights on
+beacon lights off
+turn on the beacon lights
+turn off the beacon lights
+flip on the beacon lights
+flip off the beacon lights
+engage beacon lights
+disengage beacon lights
+strobe
+spoilers
+speedbrake
+speedbrakes
+flaps
+gear
+check
+set and checked
+next
+roger
+roger that
+got that
+course
+radial
+IFR
+VFR
+doors
+open all the doors
+open front left door
+open rear left door
+open front right door
+open rear right door
+forward
+rear
+left
+right
+cabin lighting
+cabin
+lighting
+dark
+bright
+loud
+quiet
+P.A
+flight attendant
+make
+select
+inches of mercury
+hectopascals
+set altimeter
+set the altimeter to
+set standard pressure
+set altimeter to standard
+altimeter standard
+set localizer
+level change
+shut down engine
+start engine
+start the APU
+turn on the APU
+pitot heat
+turn on the pitot heat
+turn off the pitot heat
+turn on pitot heat
+turn off pitot heat
+pitot heat off
+pitot heat on
+pitot heater
+position
+horizontal
+set V1 speed
+set V2 speed
+V1
+V2
+set rotate speed
+set rotation speed
+rotation speed
+rotate speed
+level change mode off
+level change mode on
+hold this checklist
+hold the checklist
+resume the checklist
+resume this checklist
+pause the checklist
+pause this checklist
+let's go over the checklist later
+can we do this checklist later?
+can we do the checklist later?
+manual braking
+set autobrake
+ready
+flare
+flare armed
+select maximum thrust
+set efis
+forget it
+forget the checklist
+select props
+thank you
+okay thanks
+on my side
+on your side
+yaw damper
+ias
+climb
+kias
+gpws
+weather
+what's the weather looking like?
+what is the weather?
+what is the weather looking like?
+how's the weather?
+how is the weather?
+what's the temperature?
+what is the temperature?
+affirmative
+negative
+minus
+looking
+like
+what's V1?
+what is V1?
+what is V2?
+what's V2?
+tell me V1
+tell me V2
+what's VR?
+what's rotate speed?
+what's rotation speed?
+what is rotate speed?
+what is rotation speed?
+left pack
+right pack
+set the left pack
+set the right pack
+set cabin temperature
+set the cabin temperature
+set fasten belts
+communications 1
+communications 2
+system checks checklist
+pa system
+disconnected
+radios
+sync
+aboard
+checked
+ready to go
+ready for takeoff
+ready to taxi
+ready for taxi
+taxi lights off
+taxi lights on
+taxi lights engage
+taxi lights disengage
+turn off the taxi lights
+turn on the taxi lights
+turn off taxi lights
+turn on taxi lights
+turn on wing lights
+turn off wing lights
+turn on the wing lights
+turn off the wing lights
+wing lights on
+wing lights off
+logo lights on
+turn off the logo lights
+turn on the logo lights
+engage the logo lights
+disengage the logo lights
+disconnect
+disc
+external power
+back course sid
+back course star
+sid
+star
+roll hold
+vnav path
+are
+ground power
+please disconnect external power
+engage external power
+turn on external power
+turn off external power
+turn on the gpu
+turn off the gpu
+switch off gpu
+switch on gpu
+please disconnect ground power
+stop pushback
+stop pushing back
+N1
+N2
+set N1
+set N2
+extended
+as required
+set
+takeoff flaps
+closed and locked
+checked
+signal
+conducted
+select in cdu
+programmed
+lower on schedule
+notified
+standby
+takeoff setting
+retracted
+free and correct
+cutoff
+idle
+off
+configured
+obtain clearance
+completed
+check landing altitude
+select
+armed
+up
+set and off
+set and on
+set for departure
+set for takeoff
+check altimeter
+full right
+full left
+arm

@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="xpmcp-personal-debug|Win32">
+      <Configuration>xpmcp-personal-debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="xpmcp-personal-debug|x64">
+      <Configuration>xpmcp-personal-debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{BF5AC8B2-CC73-4034-BF7D-E022CFE18522}</ProjectGuid>
+    <RootNamespace>XPLiveATC</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <ProjectName>Flightdeck Ultimate</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='xpmcp-personal-debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='xpmcp-personal-debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='xpmcp-personal-debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='xpmcp-personal-debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetExt>.xpl</TargetExt>
+    <TargetName>win</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='xpmcp-personal-debug|x64'">
+    <TargetExt>.xpl</TargetExt>
+    <TargetName>win</TargetName>
+    <OutDir>E:\X-Plane 11\Resources\plugins\Flightdeck Ultimate\64\</OutDir>
+    <IntDir>E:\X-Plane 11\Resources\plugins\Flightdeck Ultimate\64\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetExt>.xpl</TargetExt>
+    <TargetName>win</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='xpmcp-personal-debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>XPLM301;XPLM300;XPLM200;CURL_STATICLIB;SFML_STATIC;_CRT_SECURE_NO_WARNINGS;IBM=1;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)XP-LiveATC\XPSDK\CHeaders\XPLM;$(SolutionDir)XP-LiveATC\libcurl;$(SolutionDir)XP-LiveATC\glew\include;$(SolutionDir)XP-LiveATC\pocketsphinx\include;$(SolutionDir)XP-LiveATC\sphinxbase\include;$(SolutionDir)XP-LiveATC\SFML\Win\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)XP-LiveATC\XPSDK\Libraries\Win;$(SolutionDir)XP-LiveATC\libcurl;$(SolutionDir)XP-LiveATC\glew\lib;$(SolutionDir)XP-LiveATC\pocketsphinx\bin\Debug\x64;$(SolutionDir)XP-LiveATC\SFML\Win\lib;%(AdditionalLibraryDirectories);$(SolutionDir)XP-LiveATC\freetype\include;$(SolutionDir)XP-LiveATC\freetype\Win64\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>XPLM_64.lib;libcurl_x64.lib;sphinxbase.lib;pocketsphinx.lib;sfml-system-s-d.lib;sfml-audio-s-d.lib;glew32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='xpmcp-personal-debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>SFML_STATIC;XPLM301;XPLM300;XPLM200;CURL_STATICLIB;_CRT_SECURE_NO_WARNINGS;IBM=1;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)XPSDK\CHeaders\XPLM;$(SolutionDir)\libcurl;$(SolutionDir)\glew\include;$(SolutionDir)\pocketsphinx\include;$(SolutionDir)\sphinxbase\include;$(SolutionDir)\SFML\Win\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ExceptionHandling>Async</ExceptionHandling>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)\XPSDK\Libraries\Win;$(SolutionDir)\libcurl;$(SolutionDir)\glew\lib;$(SolutionDir)\pocketsphinx\bin\Release\x64;$(SolutionDir)\SFML\Win\lib;%(AdditionalLibraryDirectories);$(SolutionDir)\freetype\include;$(SolutionDir)\freetype\Win64\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>XPLM_64.lib;libcurl_x64.lib;sphinxbase.lib;pocketsphinx.lib;glew32.lib;sfml-system-s-d.lib;sfml-audio-s-d.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>SFML_STATIC;XPLM301;XPLM300;XPLM200;CURL_STATICLIB;_CRT_SECURE_NO_WARNINGS;IBM=1;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)XP-LiveATC\XPSDK\CHeaders\XPLM;$(SolutionDir)XP-LiveATC\libcurl;$(SolutionDir)XP-LiveATC\glew\include;$(SolutionDir)XP-LiveATC\pocketsphinx\include;$(SolutionDir)XP-LiveATC\sphinxbase\include;$(SolutionDir)XP-LiveATC\SFML\Win\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)XP-LiveATC\XPSDK\Libraries\Win;$(SolutionDir)XP-LiveATC\libcurl;$(SolutionDir)XP-LiveATC\glew\lib;$(SolutionDir)XP-LiveATC\pocketsphinx\bin\Release\x64;$(SolutionDir)XP-LiveATC\SFML\Win\lib;%(AdditionalLibraryDirectories);$(SolutionDir)XP-LiveATC\freetype\include;$(SolutionDir)XP-LiveATC\freetype\Win64\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>XPLM_64.lib;libcurl_x64.lib;sphinxbase.lib;pocketsphinx.lib;glew32.lib;sfml-system-s.lib;sfml-audio-s.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AboutWindow.cpp" />
+    <ClCompile Include="ChecklistProgressWindow.cpp" />
+    <ClCompile Include="Commands.cpp" />
+    <ClCompile Include="Datarefs.cpp" />
+    <ClCompile Include="glfunctions.cpp" />
+    <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="Menus.cpp" />
+    <ClCompile Include="Networking.cpp" />
+    <ClCompile Include="Queues.cpp" />
+    <ClCompile Include="Recognizer.cpp" />
+    <ClCompile Include="Settings.cpp" />
+    <ClCompile Include="PreferencesWindow.cpp" />
+    <ClCompile Include="SOIL\include\etc1_utils.cpp" />
+    <ClCompile Include="SOIL\include\image_DXT.cpp" />
+    <ClCompile Include="SOIL\include\image_helper.cpp" />
+    <ClCompile Include="SOIL\include\SOIL2.cpp" />
+    <ClCompile Include="Sound.cpp" />
+    <ClCompile Include="Widgets.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainWin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Checklist.h" />
+    <ClInclude Include="Commands.h" />
+    <ClInclude Include="Datarefs.h" />
+    <ClInclude Include="fixed_string.hpp" />
+    <ClInclude Include="glfunctions.h" />
+    <ClInclude Include="GlobalVars.h" />
+    <ClInclude Include="GUI.h" />
+    <ClInclude Include="json.hpp" />
+    <ClInclude Include="Logger.h" />
+    <ClInclude Include="Menus.h" />
+    <ClInclude Include="Networking.h" />
+    <ClInclude Include="Recognizer.h" />
+    <ClInclude Include="Settings.h" />
+    <ClInclude Include="Widgets.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

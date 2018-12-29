@@ -1,0 +1,233 @@
+{
+    "after_takeoff_checklist": {
+        "FLAPS": {
+            "condition": "<0.05",
+            "dataref": "sim/flightmodel/controls/flaprat",
+            "readback": "UP"
+        },
+        "LANDING GEAR": {
+            "condition": "=0",
+            "dataref": "laminar/B738/switches/landing_gear",
+            "readback": "UP"
+        },
+        "PACKS": {
+            "condition": "<1",
+            "dataref": "none",
+            "readback": "AUTO"
+        }
+    },
+    "approach_checklist": {
+        "ALTIMETERS": {
+            "condition": "=0",
+            "dataref": "none",
+            "readback": "CHECK"
+        },
+        "SEATBELTS": {
+            "condition": ">0",
+            "dataref": "sim/cockpit2/annunciators/fasten_seatbelt",
+            "readback": "ON"
+        }
+    },
+    "before_start_checklist": {
+        "ANTI-COLLISION LIGHTS": {
+            "condition": "=1",
+            "dataref": "sim/cockpit/electrical/beacon_lights_on",
+            "readback": "ON"
+        },
+        "FLIGHT DECK DOOR": {
+            "condition": "<0.05",
+            "dataref": "laminar/B738/door/flt_dk_door_ratio",
+            "readback": "CLOSED"
+        },
+        "FUEL PUMPS": {
+            "condition": "=0",
+            "dataref": "none",
+            "readback": "ON"
+        },
+        "MCP": {
+            "condition": "=0",
+            "dataref": "none",
+            "readback": "CONFIGURED"
+        },
+        "N1 AND AIRSPEED BUGS": {
+            "condition": "=0",
+            "dataref": "none",
+            "readback": "SET AND CHECKED"
+        },
+        "PARKING BRAKE": {
+            "condition": ">0",
+            "dataref": "sim/flightmodel/controls/parkbrake",
+            "readback": "SET"
+        },
+        "PUSH AND START": {
+            "condition": "<1",
+            "dataref": "none",
+            "readback": "OBTAIN CLEARANCE"
+        }
+    },
+    "before_takeoff_checklist": {
+        "FLAPS": {
+            "condition": "<1",
+            "dataref": "none",
+            "readback": "AS REQUIRED"
+        }
+    },
+    "before_taxi_checklist": {
+        "ANTI-ICE": {
+            "condition": "<1",
+            "dataref": "sim/cockpit/switches/anti_ice_on",
+            "readback": "AS REQUIRED"
+        },
+        "AUTOBRAKE": {
+            "condition": "<1",
+            "dataref": "none",
+            "readback": "CHECKED"
+        },
+        "ENGINE START SWITCHES": {
+            "condition": "<1",
+            "dataref": "none",
+            "readback": "IDLE"
+        },
+        "FLIGHT CONTROLS": {
+            "condition": "<1",
+            "dataref": "none",
+            "readback": "CHECKED"
+        },
+        "GENERATORS": {
+            "condition": "<1",
+            "dataref": "none",
+            "readback": "ON"
+        },
+        "ISOLATION VALVE": {
+            "condition": "<1",
+            "dataref": "none",
+            "readback": "AUTO"
+        },
+        "PACKS": {
+            "condition": "<1",
+            "dataref": "none",
+            "readback": "AUTO"
+        },
+        "PROBE HEAT": {
+            "condition": ">0",
+            "dataref": "sim/cockpit/switches/pitot_heat_on",
+            "readback": "ON"
+        }
+    },
+    "commands": {
+        "apu_gen_off": "sim/electrical/APU_generator_off",
+        "apu_gen_on": "sim/electrical/APU_generator_on",
+        "apu_off": "sim/electrical/APU_off",
+        "apu_on": "sim/electrical/APU_on",
+        "apu_start": "sim/electrical/APU_start",
+        "avionics_off": "sim/systems/avionics_off",
+        "avionics_on": "sim/systems/avionics_on",
+        "carb_off": "sim/engines/carb_heat_off",
+        "carb_on": "sim/engines/carb_heat_on",
+        "flaps_dn": "sim/flight_controls/flaps_down",
+        "flaps_up": "sim/flight_controls/flaps_up",
+        "gear_dn": "sim/flight_controls/landing_gear_down",
+        "gear_toggle": "sim/flight_controls/landing_gear_toggle",
+        "gear_up": "sim/flight_controls/landing_gear_up",
+        "servos_on": "sim/autopilot/servos_on",
+        "servos_toggle": "sim/autopilot/servos_toggle",
+        "shut_down": "sim/starters/shut_down_4",
+        "shut_down_1": "sim/starters/shut_down_1",
+        "shut_down_2": "sim/starters/shut_down_2",
+        "shut_down_3": "sim/starters/shut_down_3",
+        "shut_down_4": "sim/starters/shut_down_4",
+        "spdbrk_dn_one": "sim/flight_controls/speed_brakes_down_one",
+        "spdbrk_ex_full": "sim/flight_controls/speed_brakes_down_all",
+        "spdbrk_rt_full": "sim/flight_controls/speed_brakes_up_all",
+        "spdbrk_toggle": "sim/flight_controls/speed_brakes_toggle",
+        "spdbrk_up_one": "sim/flight_controls/speed_brakes_up_one",
+        "start": "sim/starters/engage_starters",
+        "start_1": "sim/starters/engage_starter_1",
+        "start_2": "sim/starters/engage_starter_2",
+        "start_3": "sim/starters/engage_starter_3",
+        "start_4": "sim/starters/engage_starter_4",
+        "start_pushback": "BetterPushback/start",
+        "stop_pushback": "BetterPushback/stop",
+        "thrust_rev": "sim/engines/thrust_reverse_toggle",
+        "thrust_rev_max_hold": "sim/engines/thrust_reverse_hold"
+    },
+    "datarefs": {
+        "V1_speed": "laminar/B738/FMS/v1",
+        "V2_speed": "laminar/B738/FMS/v2",
+        "VR_speed": "laminar/B738/FMS/vr",
+        "adf1": "sim/cockpit/radios/adf1_freq_hz",
+        "adf2": "sim/cockpit/radios/adf2_freq_hz",
+        "ap_speed": "sim/cockpit2/autopilot/airspeed_dial_kts",
+        "autobrake_level": "sim/cockpit2/switches/auto_brake_level",
+        "autopilot": "sim/cockpit/warnings/annunciators/autopilot",
+        "autopilot_alt": "sim/cockpit/autopilot/altitude",
+        "autopilot_autothrottle": "sim/cockpit2/autopilot/autothrottle_enabled",
+        "autopilot_engaged": "sim/cockpit/autopilot/autopilot_mode",
+        "autopilot_fd": "sim/cockpit2/autopilot/flight_director_mode",
+        "autopilot_fpm": "sim/cockpit/autopilot/vertical_velocity",
+        "autopilot_hdg": "sim/cockpit/autopilot/heading",
+        "autopilot_hdg_hold": "sim/cockpit2/autopilot/heading_hold_status",
+        "autopilot_hdg_sel": "sim/cockpit2/autopilot/heading_status",
+        "autopilot_lnav": "laminar/B738/autopilot/lnav_pos",
+        "autopilot_loc": "sim/cockpit/autopilot/mode_hnav",
+        "autopilot_spd": "sim/cockpit2/autopilot/altitude_hold_status",
+        "autopilot_vnav": "laminar/B738/autopilot/vnav_pos",
+        "beacon_lights": "sim/cockpit/electrical/beacon_lights_on",
+        "cargo_door": "737u/doorstate/aft_Cargo",
+        "com1": "sim/cockpit/radios/com1_freq_hz",
+        "com2": "sim/cockpit/radios/com2_freq_hz",
+        "fl_door": "737u/doorstate/L2",
+        "flaps": "sim/flightmodel/controls/flaprqst",
+        "fr_door": "737u/doorstate/L1",
+        "gear_deploy_array": "sim/aircraft/parts/acf_gear_deploy",
+        "gpu": "sim/cockpit/electrical/gpu_on",
+        "instrument_brightness": "sim/cockpit/electrical/instrument_brightness",
+        "landing_lights": "sim/cockpit/electrical/landing_lights_on",
+        "nav_lights": "sim/cockpit/electrical/nav_lights_on",
+        "no_smoking": "sim/cockpit2/switches/no_smoking",
+        "rl_door": "737u/doorstate/R1",
+        "rr_door": "737u/doorstate/R2",
+        "seatbelt": "sim/cockpit/switches/fasten_seat_belts",
+        "spd_intv": "laminar/B738/buttons/autopilot/spd_intv",
+        "speedbrake_ratio": "sim/flightmodel2/controls/speedbrake_ratio",
+        "strobe_lights": "sim/cockpit/electrical/strobe_lights_on",
+        "taxi_lights": "sim/cockpit/electrical/taxi_light_on",
+        "thrust_lever": "sim/cockpit2/engine/actuators/throttle_ratio_all",
+        "transponder_code": "sim/cockpit/radios/transponder_code",
+        "transponder_mode": "sim/cockpit/radios/transponder_mode"
+    },
+    "descent_checklist": {
+        "APPROACH BRIEFING": {
+            "condition": "=0",
+            "dataref": "none",
+            "readback": "COMPLETED"
+        },
+        "AUTOBRAKE": {
+            "condition": "=0",
+            "dataref": "none",
+            "readback": "SELECT"
+        },
+        "PRESSURIZATION": {
+            "condition": "=0",
+            "dataref": "none",
+            "readback": "CHECK LANDING ALTITUDE"
+        },
+        "RECALL": {
+            "condition": "=0",
+            "dataref": "none",
+            "readback": "CHECKED"
+        }
+    },
+    "landing_checklist": {
+        "LANDING GEAR": {
+            "condition": "=0",
+            "dataref": "laminar/B738/switches/landing_gear",
+            "readback": "UP"
+        },
+        "SPEEDBRAKE": {
+            "condition": "=1",
+            "dataref": "sim/cockpit/warnings/annunciators/speedbrake",
+            "readback": "ARMED"
+        }
+    }
+}
