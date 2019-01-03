@@ -529,7 +529,8 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 	}
 
 	if (CStringUtils::word_exists(speechc, "PUSHBACK")) {
-		if (negative_trigger(speechc) || CStringUtils::word_exists(speechc, "STOP") || CStringUtils::word_exists(speechc, "ABORT")) {
+		if (negative_trigger(speechc) || CStringUtils::word_exists(speechc, "STOP") ||
+			CStringUtils::word_exists(speechc, "ABORT")) {
 			commandsToExecute.push_back(commands::stop_pushback); // not working w/o better pushback
 			soundsToPlay.push_back(wordToFile("pushback_stopped_1"));
 			playAllSounds();
@@ -544,7 +545,9 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 	}
 
 
-	if (CStringUtils::word_exists(speechc, "GPU") || (CStringUtils::word_exists(speechc, "EXTERNAL") && CStringUtils::word_exists(speechc, "POWER"))) {
+	if (CStringUtils::word_exists(speechc, "GPU") ||
+		(CStringUtils::word_exists(speechc, "EXTERNAL") 
+		&& CStringUtils::word_exists(speechc, "POWER"))) {
 		// very inflexible recognition; see pronounciation of GPU in dictionary file
 		if (negative_trigger(speechc)) {
 			DatarefActionInt apSetting;
@@ -569,7 +572,8 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 
 	if (strstr(speechc, "REVERSE")) {
 
-		if (CStringUtils::word_exists(speechc, "MAX") || CStringUtils::word_exists(speechc, "MAXIMUM")) {
+		if (CStringUtils::word_exists(speechc, "MAX") ||
+			CStringUtils::word_exists(speechc, "MAXIMUM")) {
 				//				commandsToExecute.push(commands::thrust_rev_max_hold);
 				soundsToPlay.push_back(wordToFile("maxrevthr"));
 			playAllSounds();
@@ -622,7 +626,8 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 
 	}
 
-	if (CStringUtils::word_exists(speechc, "DOOR") || CStringUtils::word_exists(speechc, "DOORS")) {
+	if (CStringUtils::word_exists(speechc, "DOOR") ||
+		CStringUtils::word_exists(speechc, "DOORS")) {
 
 		if (CStringUtils::word_exists(speechc, "CARGO")) {
 			if (negative_trigger(speechc)) {
@@ -647,7 +652,8 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 
 		if (CStringUtils::word_exists(speechc, "LEFT")) {
 
-			if (CStringUtils::word_exists(speechc, "FORWARD") || CStringUtils::word_exists(speechc, "FRONT")) {
+			if (CStringUtils::word_exists(speechc, "FORWARD") ||
+				CStringUtils::word_exists(speechc, "FRONT")) {
 
 				if (negative_trigger(speechc)) {
 					DatarefActionInt apSetting;
@@ -669,7 +675,9 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 				}
 			}
 
-			if (CStringUtils::word_exists(speechc, "REAR") || CStringUtils::word_exists(speechc, "BACK") || CStringUtils::word_exists(speechc, "BACKWARD")) {
+			if (CStringUtils::word_exists(speechc, "REAR") ||
+				CStringUtils::word_exists(speechc, "BACK") ||
+				CStringUtils::word_exists(speechc, "BACKWARD")) {
 
 
 				if (negative_trigger(speechc)) {
@@ -698,7 +706,8 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 
 		if (CStringUtils::word_exists(speechc, "RIGHT")) {
 
-			if (CStringUtils::word_exists(speechc, "FORWARD") || CStringUtils::word_exists(speechc, "FRONT")) {
+			if (CStringUtils::word_exists(speechc, "FORWARD") 
+				|| CStringUtils::word_exists(speechc, "FRONT")) {
 
 				if (negative_trigger(speechc)) {
 					DatarefActionInt apSetting;
@@ -720,7 +729,9 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 				}
 			}
 
-			if (CStringUtils::word_exists(speechc, "REAR") || CStringUtils::word_exists(speechc, "BACK") || CStringUtils::word_exists(speechc, "BACKWARD")) {
+			if (CStringUtils::word_exists(speechc, "REAR") 
+				|| CStringUtils::word_exists(speechc, "BACK") ||
+				CStringUtils::word_exists(speechc, "BACKWARD")) {
 
 
 				if (negative_trigger(speechc)) {
@@ -766,6 +777,7 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 	}
 
 	if (CStringUtils::word_exists(speechc, "COM1")) {
+
 		CStringUtils::reverse_number_search(speechc, numberResult);
 		if (numberResult >= 100000) { numberResult /= 10; }
 		if (numberResult >= 1000 && numberResult <= 10000) { numberResult *= 10; }
@@ -878,7 +890,8 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 
 	}
 
-	if (CStringUtils::word_exists(speechc, "BELT") || CStringUtils::word_exists(speechc, "SEATBELT")) {
+	if (CStringUtils::word_exists(speechc, "BELT") ||
+		CStringUtils::word_exists(speechc, "SEATBELT")) {
 
 		if (positive_trigger(speechc)) {
 			DatarefActionInt seatbeltSetter;
@@ -922,7 +935,8 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 		}
 	}
 
-	if (strstr(speechc, "NAV") || CStringUtils::word_exists(speechc, "NAVIGATION")) {
+	if (strstr(speechc, "NAV") || 
+		CStringUtils::word_exists(speechc, "NAVIGATION")) {
 
 		if (strstr(speechc, "LIGHT") || strstr(speechc, "LIGHTS")) {
 			if (negative_trigger(speechc)) {
@@ -1021,7 +1035,10 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 		}
 	}
 
-	if (strstr(speechc, "TRANSPONDER") || strstr(speechc, "SQUAWK")) {
+	if (strstr(speechc, "TRANSPONDER") ||
+		strstr(speechc, "SQUAWK")) {
+
+
 		CStringUtils::reverse_number_search(speechc, numberResult);
 		if (numberResult != CStringUtils::npos) {
 			if (std::to_string(numberResult)[0] == '2' && numberResult >= 10000) { numberResult -= 2000; }
@@ -1208,7 +1225,8 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 
 	}
 
-	if (CStringUtils::word_exists(speechc, "DIRECTOR") || CStringUtils::word_exists(speechc, "DIRECTORS")) {
+	if (CStringUtils::word_exists(speechc, "DIRECTOR") || 
+		CStringUtils::word_exists(speechc, "DIRECTORS")) {
 
 		if (negative_trigger(speechc)) {
 			DatarefActionInt fdAction;
