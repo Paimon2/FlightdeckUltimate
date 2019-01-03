@@ -465,7 +465,7 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 	strcpy(speechc, speech.c_str());
 	int numberResult = NULL;
 
-	XPLMDebugString(speechc);
+	//XPLMDebugString(speechc);
 	//return;
 
 
