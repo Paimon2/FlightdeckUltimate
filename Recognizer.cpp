@@ -454,6 +454,13 @@ bool positive_trigger(const char* speechc) {
 
 /* The one big megafunction.
 Started on 3-10-18.
+
+TODO: REBUILD the entire sentence corpus using lmtool:
+http://www.speech.cs.cmu.edu/tools/lmtool-new.html
+
+1) Speed/altitude bug is NOT a boolean. It is a speed, in knots. Fix this.
+2) Complete gear up and gear dn commands.
+3) Fix commands::thrust_rev_max_hold.
 */
 
 void processSpeechText(std::string speech, Recognizer& recog) {
@@ -1299,7 +1306,7 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 
 
 		else {
-			// no sequences for this in dictionary file...?
+			// no sequences for this in dictionary file...? IN PROGRESS
 			CStringUtils::reverse_number_search(speechc, numberResult);
 			DatarefActionInt apAction;
 			apAction.handle = datarefs::ap_speed;
@@ -1426,7 +1433,6 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 
 
 	if (CStringUtils::word_exists(speechc, "PITOT")) {
-		// check pronounciation
 				if (negative_trigger(speechc)) {
 					DatarefActionInt fdAction;
 					fdAction.handle = datarefs::pitot_heat;

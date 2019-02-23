@@ -103,9 +103,8 @@ float RunEveryFrame(float, float, int, void *) {
 }
 
 float RunOnceAtStartup(float, float, int, void *) {
-
 	createAboutWindow();
-
+	
 	return 0;
 }
 
@@ -156,6 +155,7 @@ PLUGIN_API int  XPluginEnable(void) {
 
 
 	defaultRecognizer.initRecognizer(); // init the recognizer
+	
 	initCommands(); // init the commands
 	pluginLogger << "Initialized commands.";
 

@@ -1,3 +1,4 @@
+#include <string>
 #include "XPLMMenus.h"
 #include "XPLMPlugin.h"
 #include "GUI.h"
@@ -41,7 +42,7 @@ void CreateMenus()
 	XPLMAppendMenuItem(ChecklistMenuID, "Landing checklist", (void*)"Landing checklist", NULL);
 	XPLMAppendMenuSeparator(MainMenuID);
 
-	XPLMAppendMenuItem(MainMenuID, "User Preferences", (void *)"User Preferences", 1);
+	XPLMAppendMenuItem(MainMenuID, "User preferences", (void *)"User preferences", 1);
 	XPLMAppendMenuItem(MainMenuID, "Reload aircraft profile", (void *)"Reload aircraft profile", 1);
 	XPLMAppendMenuItem(MainMenuID, "Restart recognition engine", (void *)"Restart recognition engine", 1);
 	XPLMAppendMenuSeparator(MainMenuID);
@@ -53,8 +54,8 @@ void CreateMenus()
 
 void menu_handler(void * in_menu_ref, void * in_item_ref)
 {
-
-	if (!strcmp((const char *)in_item_ref, "User Preferences")) {
+	
+	if (!strcmp((const char *)in_item_ref, "User preferences")) {
 		createPrefsWindow();
 	}
 

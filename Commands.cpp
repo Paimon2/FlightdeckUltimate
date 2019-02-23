@@ -11,12 +11,6 @@ int commandHandler(XPLMCommandRef inCommand, XPLMCommandPhase inPhase, void * in
 	}
 
 	
-	if (inPhase == xplm_CommandContinue)
-	{
-		
-	}
-
-	
 	if (inPhase == xplm_CommandEnd)
 	{
 		defaultRecognizer.stopListening();

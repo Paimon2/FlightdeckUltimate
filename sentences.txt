@@ -315,6 +315,9 @@ turn on the transponder
 transponder off
 transponder on
 transponder standby
+set transponder to standby
+transponder to standby
+turn transponder to standby
 standby
 engage reverse thrust
 maximum reverse thrust

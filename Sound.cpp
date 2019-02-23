@@ -16,7 +16,16 @@ void playQueuedSoundsInternal() {
 	for (auto &v : soundsToPlay) {
 		sf::Music thisSound;
 		thisSound.openFromFile(v);
-		sf::Int32 duration = thisSound.getDuration().asMilliseconds();
+		sf::Int32 duration = 0;
+
+		try {
+			
+			duration = thisSound.getDuration().asMilliseconds();
+		}
+		catch (...) {
+			duration = 1500;
+		}
+
 		thisSound.setVolume(100); // todo custom volume with json settings 
 		thisSound.setPosition(sf::Vector3f(0.66f, 1.59f, -19.64f));
 		thisSound.play();
