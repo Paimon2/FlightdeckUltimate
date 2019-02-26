@@ -443,11 +443,17 @@ namespace CStringUtils {
 }
 
 bool negative_trigger(const char* speechc) {
-	return strstr(speechc, "OFF") || strstr(speechc, "DISENGAGE") || strstr(speechc, "DISABLE") || strstr(speechc, "CLOSE");
+	return strstr(speechc, "OFF") ||
+		strstr(speechc, "DISENGAGE") || 
+		strstr(speechc, "DISABLE") || 
+		strstr(speechc, "CLOSE");
 }
 
 bool positive_trigger(const char* speechc) {
-	return strstr(speechc, "ON") || strstr(speechc, "ENGAGE") || strstr(speechc, "ENABLE") || strstr(speechc, "OPEN");
+	return strstr(speechc, "ON") ||
+		strstr(speechc, "ENGAGE") ||
+		strstr(speechc, "ENABLE") || 
+		strstr(speechc, "OPEN");
 }
 
 
@@ -458,17 +464,23 @@ Started on 3-10-18.
 TODO: REBUILD the entire sentence corpus using lmtool:
 http://www.speech.cs.cmu.edu/tools/lmtool-new.html
 
-1) Speed/altitude bug is NOT a boolean. It is a speed, in knots. Fix this.
-2) Complete gear up and gear dn commands.
-3) Fix commands::thrust_rev_max_hold.
+1) Remove the negative_trigger section for speed/altitude bug (line 1278 onwards).
+2) Redo the ENTIRE JSON system. It does not meet quality assurance standards.
+3) Redo MOST OF the GUI system. It does not meet quality assurance standards.
+4) List out all commands in a format that can be easily copied over to our
+website. Then compare everything to PlaneCommand's list of commands, and make
+changes accordingly.
 */
 
 void processSpeechText(std::string speech, Recognizer& recog) {
 
 	char speechc[512]; // hopefully spoken words will not be longer than 512 chars
-	if (speechc == NULL) { return; }
-	if (speechc == nullptr) { return; }
-	if (strlen(speechc) == 0) { return; }
+	if (speechc == NULL)
+		return; 
+	if (speechc == nullptr)
+		return; 
+	if (strlen(speechc) == 0) 
+		return; 
 	strcpy(speechc, speech.c_str());
 	int numberResult = NULL;
 
@@ -581,8 +593,8 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 
 		if (CStringUtils::word_exists(speechc, "MAX") ||
 			CStringUtils::word_exists(speechc, "MAXIMUM")) {
-				//				commandsToExecute.push(commands::thrust_rev_max_hold);
-				soundsToPlay.push_back(wordToFile("maxrevthr"));
+			commandsToExecute.push_back(commands::thrust_rev_max_hold);
+			soundsToPlay.push_back(wordToFile("maxrevthr"));
 			playAllSounds();
 			return;
 		}
@@ -591,7 +603,7 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 
 		if (negative_trigger(speechc)) {
 			DatarefActionInt apSetting;
-			// set throttle_ratio_all ref to 0?	apSetting.handle = datarefs::reverse_thrust;
+			apSetting.handle = datarefs::thrust_lever;
 			apSetting.value = 0;
 			intRefsToSet.push(apSetting);
 			soundsToPlay.push_back(wordToFile("rev_thr_on")); // no snd
@@ -601,7 +613,7 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 
 		else {
 			DatarefActionInt apSetting;
-			//same here	apSetting.handle = datarefs::reverse_thrust;
+			apSetting.handle = datarefs::thrust_lever;
 			apSetting.value = 0;
 			intRefsToSet.push(apSetting);
 			soundsToPlay.push_back(wordToFile("rev_thr_off")); // no snd
@@ -768,15 +780,19 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 	}
 	if (CStringUtils::word_exists(speechc, "GEAR")) {
 
-		if (CStringUtils::word_exists(speechc, "DOWN") || CStringUtils::word_exists(speechc, "EXTEND") || positive_trigger(speechc)) {
-			//	commandsToExecute.push(commands::gear_dn);
+		if (CStringUtils::word_exists(speechc, "DOWN") || 
+			CStringUtils::word_exists(speechc, "EXTEND") ||
+			positive_trigger(speechc)) {
+			commandsToExecute.push_back(commands::gear_dn);
 			throw std::logic_error("gear down.wav not implemented");
 			soundsToPlay.push_back(wordToFile("navlights_off"));
 			playAllSounds();
 		}
 
-		if (CStringUtils::word_exists(speechc, "UP") || CStringUtils::word_exists(speechc, "RETRACT") || negative_trigger(speechc)) {
-			//	commandsToExecute.push(commands::gear_up);
+		if (CStringUtils::word_exists(speechc, "UP") ||
+			CStringUtils::word_exists(speechc, "RETRACT") ||
+			negative_trigger(speechc)) {
+			commandsToExecute.push_back(commands::gear_up);
 			soundsToPlay.push_back(wordToFile("gearup"));
 			playAllSounds();
 		}
@@ -1271,9 +1287,10 @@ void processSpeechText(std::string speech, Recognizer& recog) {
 			}
 
 			else {
+				CStringUtils::reverse_number_search(speechc, numberResult);
 				DatarefActionInt apAction;
 				apAction.handle = datarefs::autopilot_spd;
-				apAction.value = 1;
+				apAction.value = numberResult;
 				intRefsToSet.push(apAction);
 				soundsToPlay.push_back(wordToFile("autopilot_spd"));
 				playAllSounds();
