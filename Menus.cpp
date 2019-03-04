@@ -2,6 +2,7 @@
 #include "XPLMMenus.h"
 #include "XPLMPlugin.h"
 #include "GUI.h"
+#include "ChecklistEditorWindow.hpp"
 
 using namespace std;
 
@@ -43,6 +44,7 @@ void CreateMenus()
 	XPLMAppendMenuSeparator(MainMenuID);
 
 	XPLMAppendMenuItem(MainMenuID, "User preferences", (void *)"User preferences", 1);
+	XPLMAppendMenuItem(MainMenuID, "Checklist editor", (void *)"Checklist editor", 1);
 	XPLMAppendMenuItem(MainMenuID, "Reload aircraft profile", (void *)"Reload aircraft profile", 1);
 	XPLMAppendMenuItem(MainMenuID, "Restart recognition engine", (void *)"Restart recognition engine", 1);
 	XPLMAppendMenuSeparator(MainMenuID);
@@ -56,8 +58,13 @@ void menu_handler(void * in_menu_ref, void * in_item_ref)
 {
 	
 	if (!strcmp((const char *)in_item_ref, "User preferences")) {
-		createPrefsWindow();
+//		createPrefsWindow();
 	}
+
+	if (!strcmp((const char *)in_item_ref, "Checklist editor")) {
+		createChecklistEditorWindow();
+	}
+
 
 	if (!strcmp((const char *)in_item_ref, "About Flightdeck Ultimate")) {
 		createAboutWindow();

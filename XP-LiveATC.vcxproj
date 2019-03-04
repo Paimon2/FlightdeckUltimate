@@ -190,6 +190,7 @@
   <ItemGroup>
     <ClCompile Include="AboutWindow.cpp" />
     <ClCompile Include="ChecklistProgressWindow.cpp" />
+    <ClCompile Include="Clipboard.cpp" />
     <ClCompile Include="Commands.cpp" />
     <ClCompile Include="Datarefs.cpp" />
     <ClCompile Include="glfunctions.cpp" />
@@ -199,7 +200,6 @@
     <ClCompile Include="Queues.cpp" />
     <ClCompile Include="Recognizer.cpp" />
     <ClCompile Include="Settings.cpp" />
-    <ClCompile Include="PreferencesWindow.cpp" />
     <ClCompile Include="SOIL\include\etc1_utils.cpp" />
     <ClCompile Include="SOIL\include\image_DXT.cpp" />
     <ClCompile Include="SOIL\include\image_helper.cpp" />
@@ -211,6 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Checklist.h" />
+    <ClInclude Include="ChecklistEditorWindow.hpp" />
     <ClInclude Include="Commands.h" />
     <ClInclude Include="Datarefs.h" />
     <ClInclude Include="fixed_string.hpp" />
@@ -221,6 +222,7 @@
     <ClInclude Include="Logger.h" />
     <ClInclude Include="Menus.h" />
     <ClInclude Include="Networking.h" />
+    <ClInclude Include="PrefsWindow.hpp" />
     <ClInclude Include="Recognizer.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="Widgets.h" />

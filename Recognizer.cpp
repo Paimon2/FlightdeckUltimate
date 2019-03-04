@@ -107,7 +107,7 @@ void recognizeSpeech(Recognizer &recognizer, bool processCommands) {
 	while (1) {
 
 
-		recognizer.k = ad_read(recognizer.ad, recognizer.adbuf, 8192);                // capture the number of frames in the audio buffer
+		recognizer.k = ad_read(recognizer.ad, recognizer.adbuf, 4096);                // capture the number of frames in the audio buffer
 		ps_process_raw(recognizer.ps, recognizer.adbuf, recognizer.k, FALSE, FALSE);  // send the audio buffer to the pocketsphinx decoder
 
 																					  //	recognizer.in_speech = ps_get_in_speech(recognizer.ps);            // test to see if speech is being detected
@@ -122,7 +122,13 @@ void recognizeSpeech(Recognizer &recognizer, bool processCommands) {
 				// TODO: Process the commands
 				//	XPLMSpeakString(recognizer.hyp);
 
-				processSpeechText(std::string(recognizer.hyp), recognizer);
+				if (!recognizer.hyp)
+					break;
+
+				std::ostringstream oss;
+				oss << recognizer.hyp;
+				std::string hypString = oss.str();
+				processSpeechText(hypString, recognizer);
 
 
 				recognizer.listenerCount--;

@@ -103,7 +103,7 @@ float RunEveryFrame(float, float, int, void *) {
 }
 
 float RunOnceAtStartup(float, float, int, void *) {
-	createAboutWindow();
+	createChecklistEditorWindow();
 	
 	return 0;
 }

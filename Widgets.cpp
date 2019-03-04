@@ -1,3 +1,4 @@
+#include "GUI.h"
 #include "Widgets.h"
 #include "GlobalVars.h"
 #include "XPLMGraphics.h"
@@ -60,11 +61,22 @@ void Button::draw(int mouse_x, int mouse_y, int window_x, int window_y)
 	XPLMDrawString(color, window_x + x, window_y + y + 10, text, NULL, xplmFont_Proportional);
 }
 
+void Button::setCallback(std::function<void()> function)
+{
+	callback = function;
+}
+
 
 bool Button::onMouseEvent(int mouse_x, int mouse_y, XPLMMouseStatus is_down, int window_x, int window_y)
 {
 	if (CoordGUIInRect(mouse_x, mouse_y, window_x + x, window_y + y, width, height) && is_down == xplm_MouseDown) { buttonState = 2; }
-	else if (CoordGUIInRect(mouse_x, mouse_y, window_x + x, window_y + y, width, height) && is_down == xplm_MouseUp) { buttonState = 0; return 1; }
+	else if (CoordGUIInRect(mouse_x, mouse_y, window_x + x, window_y + y, width, height) && is_down == xplm_MouseUp) { 
+		try {
+			callback();
+		}
+		catch (...) {}
+		buttonState = 0;
+		return 1; }
 	if (is_down == xplm_MouseUp) { buttonState = 0; }
 	return 0;
 }
@@ -181,6 +193,16 @@ void TextBox::sendKey(char key, char virtual_key)
 {
 	if (hasFocus) {
 		int ms = XPLMMeasureString(xplmFont_Proportional, text, strlen(text));
+
+		XPLMDebugString("Clipboard: ");
+
+		/*CTRL + V*/
+		if (key == 22) {
+			std::string textStr(text + getClipboardText());
+			textStr.erase(textStr.length() + (maxlen - textStr.length()));
+			sprintf(text, "%s", textStr.c_str());
+		}
+		
 		if (virtual_key == XPLM_VK_BACK && strlen(text) != 0) {
 			keyBugFixCounter++;
 			if (keyBugFixCounter == 2) { text[strlen(text) - 1] = '\0'; keyBugFixCounter = 0; }

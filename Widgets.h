@@ -1,3 +1,4 @@
+#include <functional>
 #include "glfunctions.h"
 #include <vector>
 #include "fixed_string.hpp"
@@ -17,6 +18,7 @@ extern int textBoxBlinker;
 /*Standard X-Plane style light blue button*/
 class Button {
 private:
+	std::function<void()> callback;
 	char text[32];
 	short buttonState;
 	int x;
@@ -43,11 +45,14 @@ public:
 	* Pass in the arguments as you get them from XPLMGetMouseLocationGlobal() and XPLMGetWindowGeometry()
 	*/
 	void draw(int mouse_x, int mouse_y, int window_x, int window_y);
+
+	void setCallback(std::function<void()> function);
 	/**
 	* Sends a mouse down or up event to the button.
 	@return true if button has been clicked, else false
 	*/
 	bool onMouseEvent(int mouse_x, int mouse_y, XPLMMouseStatus is_down, int window_x, int window_y);
+	
 };
 
 /*Standard generic/X-Plane style text box*/
