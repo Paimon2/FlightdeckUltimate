@@ -50,7 +50,7 @@ void AboutDraw(XPLMWindowID inWindowID, void * inRefcon) {
 
 	XPLMDrawString(white, x + 75, y + 170, fixed_string<64>("Flightdeck Ultimate - Version " VERSION_S), NULL, xplmFont_Proportional);
 	XPLMDrawString(white, x + 75, y + 150, fixed_string<256>(_DEBUG ? "Debug version compiled on " __DATE__ :
-		"Release version compiled on" __DATE__ ), NULL, xplmFont_Proportional);
+	"Release version compiled on" __DATE__ ), NULL, xplmFont_Proportional);
 	XPLMDrawString(white, x + 75, y + 120, fixed_string<32>("(C) 2019 Transonic Simulations"), NULL, xplmFont_Proportional);
 
 	XPLMDrawString(white, x + 75, y + 100, updateText, NULL, xplmFont_Proportional);
@@ -88,10 +88,10 @@ void createAboutWindow() {
 	XPLMDestroyWindow(AboutWindow);
 	XPLMCreateWindow_t AboutWindowST;
 	AboutWindowST.structSize = sizeof(AboutWindowST);
-	AboutWindowST.left = sw / 2 - 200; // x position
-	AboutWindowST.bottom = sh / 2 - 125; // height
-	AboutWindowST.right = sh / 2; // width
-	AboutWindowST.top = sw / 2 + 125; // y position
+	AboutWindowST.left = (sw / 2) - 200; // RHS = width / 2
+	AboutWindowST.bottom = (sh / 2) - 150; // RHS = height / 2
+	AboutWindowST.right = (sw / 2) + 200; // RHS = width / 2
+	AboutWindowST.top = (sh / 2) + 150; // RHS = height / 2
 	AboutWindowST.visible = 1;
 	AboutWindowST.drawWindowFunc = AboutDraw;
 	AboutWindowST.handleMouseClickFunc = AboutMouse;

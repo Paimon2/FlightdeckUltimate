@@ -149,10 +149,11 @@
       <PreprocessorDefinitions>SFML_STATIC;XPLM301;XPLM300;XPLM200;CURL_STATICLIB;_CRT_SECURE_NO_WARNINGS;IBM=1;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)XPSDK\CHeaders\XPLM;$(SolutionDir)\libcurl;$(SolutionDir)\glew\include;$(SolutionDir)\pocketsphinx\include;$(SolutionDir)\sphinxbase\include;$(SolutionDir)\SFML\Win\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)\XPSDK\Libraries\Win;$(SolutionDir)\libcurl;$(SolutionDir)\glew\lib;$(SolutionDir)\pocketsphinx\bin\Release\x64;$(SolutionDir)\SFML\Win\lib;%(AdditionalLibraryDirectories);$(SolutionDir)\freetype\include;$(SolutionDir)\freetype\Win64\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>XPLM_64.lib;libcurl_x64.lib;sphinxbase.lib;pocketsphinx.lib;glew32.lib;sfml-system-s-d.lib;sfml-audio-s-d.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>XPLM_64.lib;libcurl_x64.lib;sphinxbase.lib;pocketsphinx.lib;glew32.lib;sfml-system-s-d.lib;sfml-audio-s-d.lib;openal32.lib;freetype.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -196,6 +197,9 @@
     <ClCompile Include="glfunctions.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Menus.cpp" />
+    <ClCompile Include="MsgWindow.cpp" />
+    <ClCompile Include="NativeFileDialog\nfd_common.c" />
+    <ClCompile Include="NativeFileDialog\nfd_win.cpp" />
     <ClCompile Include="Networking.cpp" />
     <ClCompile Include="Queues.cpp" />
     <ClCompile Include="Recognizer.cpp" />
@@ -221,6 +225,9 @@
     <ClInclude Include="json.hpp" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="Menus.h" />
+    <ClInclude Include="NativeFileDialog\common.h" />
+    <ClInclude Include="NativeFileDialog\nfd.h" />
+    <ClInclude Include="NativeFileDialog\nfd_common.h" />
     <ClInclude Include="Networking.h" />
     <ClInclude Include="PrefsWindow.hpp" />
     <ClInclude Include="Recognizer.h" />

@@ -3,6 +3,11 @@
 #include "GlobalVars.h"
 #include "XPLMGraphics.h"
 #include "XPLMDisplay.h"
+#if IBM
+#include <windows.h>
+#else
+#include <X11/Xlib.h>
+#endif
 /**
 *	XP11.10+/MCP-Passengers/Flightdeck Ultimate
 *   OpenGL and XPLM Widget Library
@@ -12,6 +17,17 @@
 
 int textBoxBlinker;
 
+void getScreenResolution(int &width, int &height) {
+#if IBM
+	width = (int)GetSystemMetrics(SM_CXSCREEN);
+	height = (int)GetSystemMetrics(SM_CYSCREEN);
+#else
+	Display* disp = XOpenDisplay(NULL);
+	Screen*  scrn = DefaultScreenOfDisplay(disp);
+	width = scrn->width;
+	height = scrn->height;
+#endif
+}
 
 
 void drawButtonHandler(int state, int mouse_x, int mouse_y, int button_x_pos, int button_y_pos, int width, int height)
@@ -198,9 +214,23 @@ void TextBox::sendKey(char key, char virtual_key)
 
 		/*CTRL + V*/
 		if (key == 22) {
-			std::string textStr(text + getClipboardText());
+			std::string textStr;
+			try {
+				if (strlen(text) == 0) {
+					textStr = "";
+					goto sk;
+				}
+				textStr = text + getClipboardText();
+			}
+			catch (...) {
+				textStr = "";
+			}
+			
 			textStr.erase(textStr.length() + (maxlen - textStr.length()));
 			sprintf(text, "%s", textStr.c_str());
+		sk:
+			// todo allow textstr to be pasted when text is empty
+			return;
 		}
 		
 		if (virtual_key == XPLM_VK_BACK && strlen(text) != 0) {

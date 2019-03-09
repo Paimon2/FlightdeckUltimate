@@ -6,13 +6,19 @@
 #include "Widgets.h"
 #include "glfunctions.h"
 #include "XPLMDisplay.h"
+#include "XPLMDataAccess.h"
+#include "NativeFileDialog/nfd.h"
+#include "json.hpp"
+#include <fstream>
+#include "GlobalVars.h"
 
 static XPLMWindowID checklistEditorWindowHandle;
+static nlohmann::json currentCeJsonHandle;
 
-
-Button ceClose("         Close", 130, 100);
-Button ceSave("           Save", 390, 100);
-Button ceHelp("           Help", 650, 100);
+Button ceOpen("           Open", 83	, 560);
+Button ceClose("         Close", 570, 560);
+Button ceSave("           Save", 257, 560);
+Button ceHelp("           Help", 420, 560);
 TextBox phraseList(200, 200, 200, 25, 128U, 2, false, 1);
 
 inline int checklistEditorMouseInput(XPLMWindowID inWindowID,
@@ -24,6 +30,7 @@ inline int checklistEditorMouseInput(XPLMWindowID inWindowID,
 	int wx, wy;
 	XPLMGetWindowGeometry(inWindowID, &wx, nullptr, nullptr, &wy);
 
+	ceOpen.onMouseEvent(x, y, is_down, wx, wy);
 	ceSave.onMouseEvent(x, y, is_down, wx, wy);
 	ceClose.onMouseEvent(x, y, is_down, wx, wy);
 	ceHelp.onMouseEvent(x, y, is_down, wx, wy);
@@ -52,6 +59,7 @@ inline void drawChecklistEditorWindow(XPLMWindowID         inWindowID,
 	XPLMGetMouseLocationGlobal(&mouse_x, &mouse_y);
 	XPLMGetWindowGeometry(inWindowID, &x, nullptr, nullptr, &y);
 
+	ceOpen.draw(mouse_x, mouse_y, x, y);
 	ceSave.draw(mouse_x, mouse_y, x, y);
 	ceClose.draw(mouse_x, mouse_y, x, y);
 	ceHelp.draw(mouse_x, mouse_y, x, y);
@@ -61,15 +69,18 @@ inline void drawChecklistEditorWindow(XPLMWindowID         inWindowID,
 
 
 inline void createChecklistEditorWindow() {
+	
+	
+
 	int sw, sh;
 	XPLMGetScreenSize(&sw, &sh);
 	XPLMDestroyWindow(checklistEditorWindowHandle);
 	XPLMCreateWindow_t EditorWindowST;
 	EditorWindowST.structSize = sizeof(EditorWindowST);
-	EditorWindowST.left = sw / 2 - 200; // x position
-	EditorWindowST.bottom = sh / 2 - 125; // height
-	EditorWindowST.right = sh / 2; // width
-	EditorWindowST.top = sw / 2 + 125; // y position
+	EditorWindowST.left = (sw / 2) - 400; // RHS = width / 2
+	EditorWindowST.bottom = (sh / 2) - 300; // RHS = height / 2
+	EditorWindowST.right = (sw / 2) + 400; // RHS = width / 2
+	EditorWindowST.top = (sh / 2) + 300; // RHS = height / 2
 	EditorWindowST.visible = 1;
 	EditorWindowST.drawWindowFunc = drawChecklistEditorWindow;
 	EditorWindowST.handleMouseClickFunc = checklistEditorMouseInput;
@@ -86,6 +97,42 @@ inline void createChecklistEditorWindow() {
 	XPLMSetWindowGravity(checklistEditorWindowHandle, 0, 1, 0, 1);
 	XPLMSetWindowResizingLimits(checklistEditorWindowHandle, 800, 600, 800, 600);
 	XPLMSetWindowTitle(checklistEditorWindowHandle, "Checklist editor");
+
+	ceSave.setCallback([]() {
+
+		
+
+	});
+
+	ceOpen.setCallback([]() {
+
+		int width, height;
+		XPLMGetScreenSize(&width, &height);
+		int screenWidth, screenHeight;
+		getScreenResolution(screenWidth, screenHeight);
+
+
+		if (screenWidth == width
+			&& screenHeight == height) {
+			createMsgWindow("Fullscreen mode not supported",
+				"  Please exit fullscreen mode to open a checklist file.");
+			return;
+		}
+
+		nfdchar_t *outPath = NULL;
+		nfdresult_t result = NFD_OpenDialog("json", NULL, &outPath);
+
+		if (result == NFD_OKAY) {
+			std::ifstream jsonStream(outPath);
+			jsonStream >> currentCeJsonHandle;
+		}
+
+		else if (result == NFD_ERROR) {
+			pluginLogger.logError("NFD open file dialog error:");
+			pluginLogger.logError(NFD_GetError());
+		}
+
+	});
 }
 
 

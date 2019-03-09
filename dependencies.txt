@@ -1,0 +1,2 @@
+https://www.microsoft.com/en-us/download/confirmation.aspx?id=30679 - Visual Studio 2012 C++ redist --- PLUGIN LOADS FAILS W/O THIS, SPHINX REQUIRES IT
+https://go.microsoft.com/fwlink/?LinkId=746572, PLUGIN LOAD MIGHT FAIL W/O THIS

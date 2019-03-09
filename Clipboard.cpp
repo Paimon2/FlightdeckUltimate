@@ -13,28 +13,38 @@
 #ifdef IBM
 std::string getClipboardText()
 {
-	// Try opening the clipboard
-	if (!OpenClipboard(nullptr))
-		return "";
+	std::string text;
 
-	  // Get handle of clipboard object for ANSI text
-	HANDLE hData = GetClipboardData(CF_TEXT);
-	if (hData == nullptr)
-		return "";
+	try {
 
-	  // Lock the handle to get the actual text pointer
+		// Try opening the clipboard
+		if (!OpenClipboard(nullptr))
+			return "";
+
+		// Get handle of clipboard object for ANSI text
+		HANDLE hData = GetClipboardData(CF_TEXT);
+		if (hData == nullptr)
+			return "";
+
+		// Lock the handle to get the actual text pointer
 		char * pszText = static_cast<char*>(GlobalLock(hData));
-	if (pszText == nullptr)
-		return "";
+		if (pszText == nullptr)
+			return "";
 
-	  // Save text in a string class instance
-		std::string text(pszText);
+		// Save text in a string class instance
+		
+		text = pszText;
 
-	// Release the lock
-	GlobalUnlock(hData);
+		// Release the lock
+		GlobalUnlock(hData);
 
-	// Release the clipboard
-	CloseClipboard();
+		// Release the clipboard
+		CloseClipboard();
+	}
+
+	catch (...) {
+		text = "";
+	}
 
 	return text;
 }

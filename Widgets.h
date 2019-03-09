@@ -18,7 +18,6 @@ extern int textBoxBlinker;
 /*Standard X-Plane style light blue button*/
 class Button {
 private:
-	std::function<void()> callback;
 	char text[32];
 	short buttonState;
 	int x;
@@ -52,6 +51,10 @@ public:
 	@return true if button has been clicked, else false
 	*/
 	bool onMouseEvent(int mouse_x, int mouse_y, XPLMMouseStatus is_down, int window_x, int window_y);
+	/*
+	* What to be executed when the button is pressed
+	*/
+	std::function<void()> callback;
 	
 };
 
