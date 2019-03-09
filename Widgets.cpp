@@ -29,6 +29,10 @@ void getScreenResolution(int &width, int &height) {
 #endif
 }
 
+void splitFilename(const std::string& str) {
+	unsigned found = str.find_last_of("\\");
+	str.substr(found + 1);
+}
 
 void drawButtonHandler(int state, int mouse_x, int mouse_y, int button_x_pos, int button_y_pos, int width, int height)
 {

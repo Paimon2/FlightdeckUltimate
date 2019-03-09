@@ -205,8 +205,15 @@ static nfdresult_t AddFiltersToDialog( ::IFileDialog *fileOpenDialog, const char
     }
 
     /* Add wildcard */
+	for (UINT i = 0; i < filterCount; ++i)
+	{
+		if ((wcscmp(L"*.json", specList[i].pszSpec) == 0)) {
+			specList[i].pszName = L"JSON configuration files";
+		}
+	}
+
     specList[specIdx].pszSpec = WILDCARD;
-    specList[specIdx].pszName = WILDCARD;
+    specList[specIdx].pszName = L"All files";
     
     fileOpenDialog->SetFileTypes( filterCount+1, specList );
 
@@ -358,10 +365,16 @@ static nfdresult_t SetDefaultPath( IFileDialog *dialog, const char *defaultPath 
 
 /* public */
 
+wchar_t *convertCharArrayToLPCWSTR(const char* charArray)
+{
+	wchar_t* wString = new wchar_t[4096];
+	MultiByteToWideChar(CP_ACP, 0, charArray, -1, wString, 4096);
+	return wString;
+}
 
 nfdresult_t NFD_OpenDialog( const nfdchar_t *filterList,
                             const nfdchar_t *defaultPath,
-                            nfdchar_t **outPath )
+                            nfdchar_t **outPath, nfdchar_t *title )
 {
     nfdresult_t nfdResult = NFD_ERROR;
     
@@ -372,18 +385,16 @@ nfdresult_t NFD_OpenDialog( const nfdchar_t *filterList,
 
     ::IFileOpenDialog *fileOpenDialog(NULL);
 	HRESULT result = NULL;
-
-    if ( !SUCCEEDED(coResult))
-    {
-        fileOpenDialog = NULL;
-        NFDi_SetError("Could not initialize COM.");
-        goto end;
-    }
-
-    // Create dialog
-    result = ::CoCreateInstance(::CLSID_FileOpenDialog, NULL,
-                                        CLSCTX_ALL, ::IID_IFileOpenDialog,
-                                        reinterpret_cast<void**>(&fileOpenDialog) );
+	if (!SUCCEEDED(coResult))
+	{
+		fileOpenDialog = NULL;
+		NFDi_SetError("Could not initialize COM.");
+		goto end;
+	}
+	// Create dialog
+	result = ::CoCreateInstance(::CLSID_FileOpenDialog, NULL,
+		CLSCTX_ALL, ::IID_IFileOpenDialog,
+		reinterpret_cast<void**>(&fileOpenDialog));
                                 
     if ( !SUCCEEDED(result) )
     {
@@ -404,7 +415,9 @@ nfdresult_t NFD_OpenDialog( const nfdchar_t *filterList,
     }    
 
     // Show the dialog.
+	fileOpenDialog->SetTitle(convertCharArrayToLPCWSTR(title));
     result = fileOpenDialog->Show(NULL);
+	
     if ( SUCCEEDED(result) )
     {
         // Get the file name

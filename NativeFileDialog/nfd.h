@@ -36,9 +36,16 @@ typedef enum {
 /* nfd_<targetplatform>.c */
 
 /* single file open dialog */    
+#if IBM
 nfdresult_t NFD_OpenDialog( const nfdchar_t *filterList,
                             const nfdchar_t *defaultPath,
-                            nfdchar_t **outPath );
+                            nfdchar_t **outPath,
+							nfdchar_t *title);
+#else
+nfdresult_t NFD_OpenDialog(const nfdchar_t *filterList,
+	const nfdchar_t *defaultPath,
+	nfdchar_t **outPath);
+#endif
 
 /* multiple file open dialog */    
 nfdresult_t NFD_OpenDialogMultiple( const nfdchar_t *filterList,

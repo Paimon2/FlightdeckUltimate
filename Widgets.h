@@ -20,11 +20,11 @@ class Button {
 private:
 	char text[32];
 	short buttonState;
-	int x;
-	int y;
 	int width;
 	int height;
 public:
+	int x;
+	int y;
 	/**
 	* Constructs a button.
 	* @param texti The text which is to be drawn on top of this button

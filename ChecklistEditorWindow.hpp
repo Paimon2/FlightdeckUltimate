@@ -10,10 +10,14 @@
 #include "NativeFileDialog/nfd.h"
 #include "json.hpp"
 #include <fstream>
+#include <iomanip>
 #include "GlobalVars.h"
+#include <experimental/filesystem>
+#include <sstream>
 
 static XPLMWindowID checklistEditorWindowHandle;
 static nlohmann::json currentCeJsonHandle;
+static nfdchar_t *outPath = NULL;
 
 Button ceOpen("           Open", 83	, 560);
 Button ceClose("         Close", 570, 560);
@@ -34,8 +38,15 @@ inline int checklistEditorMouseInput(XPLMWindowID inWindowID,
 	ceSave.onMouseEvent(x, y, is_down, wx, wy);
 	ceClose.onMouseEvent(x, y, is_down, wx, wy);
 	ceHelp.onMouseEvent(x, y, is_down, wx, wy);
-	if (phraseList.onMouseEvent(x, y, wx, wy)) {
+
+	if (phraseList.onMouseEvent(x, y, wx, wy)
+		|| CoordGUIInRect(x, y, wx, wy, 800, 600)
+		) {
 		XPLMTakeKeyboardFocus(inWindowID);
+	}
+
+	else {
+		XPLMTakeKeyboardFocus(0);
 	}
 
 	return 1;
@@ -48,7 +59,29 @@ inline void checklistEditorKeyInput(XPLMWindowID in_window_id,
 	char virtual_key,
 	void * in_refcon,
 	int losing_focus) {
+
+	
 	phraseList.sendKey(key, virtual_key);
+
+	// CTRL + S
+	if (key == 19) {
+		ceSave.callback();
+		XPLMTakeKeyboardFocus(in_window_id);
+	}
+
+	// CTRL + O
+	if (key == 15) {
+		ceOpen.callback();
+		XPLMTakeKeyboardFocus(in_window_id);
+	}
+
+	// F1 (commonly used as help)
+	if (key == 112) {
+		ceHelp.callback();
+		XPLMTakeKeyboardFocus(in_window_id);
+	}
+
+
 	}
 
 inline void drawChecklistEditorWindow(XPLMWindowID         inWindowID,
@@ -59,11 +92,73 @@ inline void drawChecklistEditorWindow(XPLMWindowID         inWindowID,
 	XPLMGetMouseLocationGlobal(&mouse_x, &mouse_y);
 	XPLMGetWindowGeometry(inWindowID, &x, nullptr, nullptr, &y);
 
+#pragma region Top buttons
+
+
 	ceOpen.draw(mouse_x, mouse_y, x, y);
+
+	if (CoordGUIInRect(mouse_x, mouse_y, 
+		x + ceOpen.x, y + ceOpen.y, 150, 25))
+	{
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glColor4ub(150, 150, 150, 180);
+		drawRectangle(mouse_x, mouse_y, mouse_x - 200, mouse_y - 60);
+		XPLMDrawString(white, mouse_x - 180, mouse_y - 20, fixed_string<22>("Open a checklist file"), 0, xplmFont_Proportional);
+		XPLMDrawString(tpr, mouse_x - 180, mouse_y - 40, fixed_string<16>("CTRL + O"), 0, xplmFont_Proportional);
+	}
+
 	ceSave.draw(mouse_x, mouse_y, x, y);
-	ceClose.draw(mouse_x, mouse_y, x, y);
+	if (CoordGUIInRect(mouse_x, mouse_y,
+		x + ceSave.x, y + ceSave.y, 150, 25))
+	{
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glColor4ub(150, 150, 150, 180);
+		drawRectangle(mouse_x, mouse_y, mouse_x - 200, mouse_y - 60);
+		XPLMDrawString(white, mouse_x - 180, mouse_y - 20, fixed_string<25>("Save changes to the file"), 0, xplmFont_Proportional);
+		XPLMDrawString(tpr, mouse_x - 180, mouse_y - 40, fixed_string<16>("CTRL + S"), 0, xplmFont_Proportional);
+	}
+
 	ceHelp.draw(mouse_x, mouse_y, x, y);
-	phraseList.draw(x, y);
+	if (CoordGUIInRect(mouse_x, mouse_y,
+		x + ceHelp.x, y + ceHelp.y, 150, 25))
+	{
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glColor4ub(150, 150, 150, 180);
+		drawRectangle(mouse_x, mouse_y, mouse_x - 250, mouse_y - 60);
+		XPLMDrawString(white, mouse_x - 240, mouse_y - 20, fixed_string<41>("Get online help on how to use the editor"),
+			0, xplmFont_Proportional);
+		XPLMDrawString(tpr, mouse_x - 240, mouse_y - 40, fixed_string<3>("F1"), 0, xplmFont_Proportional);
+	}
+
+	ceClose.draw(mouse_x, mouse_y, x, y);
+	if (CoordGUIInRect(mouse_x, mouse_y,
+		x + ceClose.x, y + ceClose.y, 150, 25))
+	{
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glColor4ub(150, 150, 150, 180);
+		drawRectangle(mouse_x, mouse_y, mouse_x - 220, mouse_y - 40);
+		XPLMDrawString(white, mouse_x - 210, mouse_y - 20, fixed_string<35>("Exit the editor discarding changes"), 
+			0, xplmFont_Proportional);
+	}
+
+
+#pragma endregion
+
+
+phraseList.draw(x, y);
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -97,11 +192,11 @@ inline void createChecklistEditorWindow() {
 	XPLMSetWindowGravity(checklistEditorWindowHandle, 0, 1, 0, 1);
 	XPLMSetWindowResizingLimits(checklistEditorWindowHandle, 800, 600, 800, 600);
 	XPLMSetWindowTitle(checklistEditorWindowHandle, "Checklist editor");
+	XPLMTakeKeyboardFocus(checklistEditorWindowHandle);
 
 	ceSave.setCallback([]() {
 
 		
-
 	});
 
 	ceOpen.setCallback([]() {
@@ -119,12 +214,21 @@ inline void createChecklistEditorWindow() {
 			return;
 		}
 
-		nfdchar_t *outPath = NULL;
+		#if IBM
+		nfdresult_t result = NFD_OpenDialog("json", NULL, &outPath, 
+			fixed_string<64>("Open aircraft configuration file"));
+		#else
 		nfdresult_t result = NFD_OpenDialog("json", NULL, &outPath);
-
+		#endif
 		if (result == NFD_OKAY) {
 			std::ifstream jsonStream(outPath);
 			jsonStream >> currentCeJsonHandle;
+			std::string fileName;
+			std::stringstream oss;
+			oss << std::experimental::filesystem::path(outPath).filename();
+			fileName = oss.str();
+			XPLMSetWindowTitle(checklistEditorWindowHandle,
+				fixed_string<256>("Checklist editor - " + fileName));
 		}
 
 		else if (result == NFD_ERROR) {
